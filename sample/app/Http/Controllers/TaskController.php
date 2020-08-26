@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateTask;
 use App\Folder;
 use App\Task;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -13,10 +14,13 @@ class TaskController extends Controller
 
         $folders = Folder::all();
 
+        $folders = Auth::user()->folders()->get();
+    
+
         $current_folder = Folder::find($id);
 
         $tasks = $current_folder->tasks()->get();
-    
+
 
         return view('tasks/index',[
             'folders' => $folders,
