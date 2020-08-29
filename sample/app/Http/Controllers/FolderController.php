@@ -21,11 +21,10 @@ class FolderController extends Controller
 
         $folder->title = $request->title;
 
-        $folder->save();
 
         Auth::user()->folders()->save($folder);
 
 
-        return redirect()->route('task.index',['id' =>$folder->id,]);
+        return redirect()->route('tasks.index',['id' =>$folder->id,]);
     }
 }

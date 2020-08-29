@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Task;
+use Illuminate\Validation\Rule;
 
-class EditTask extends FormRequest
+class EditTask extends  CreateTask
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class EditTask extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
